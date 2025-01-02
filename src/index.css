@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+a.active hr{
+    display: block;
+}
+
+.myfont{
+    font-family: "Prata", serif;
+}
+.myfont2{
+    font-family: "Outfit", sans-serif;
+}
