@@ -62,8 +62,8 @@ const Product = () => {
         }  
         </div>
         <div>
-        <img src={imgs[(imgs.length-1 )]} alt="" className='h-full w-[800px]'/>
-          {/* {bigimg} */}
+        {/* <img src={imgs[(imgs.length-1 )]} alt="" className='h-full w-[800px]'/> */}
+          {bigimg}
           {/* <img src={bigimg} alt="" className='h-full w-[800px]' /> */}
         </div>
       </div>

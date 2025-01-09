@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import {assets} from '../assets/frontend_assets/assets'
 import {Link , NavLink} from 'react-router-dom'
+import { IoIosCloseCircle } from "react-icons/io";
 
 import { cartvalue } from '../App';
 import { Shopcontext } from '../Context/ShopContext';
@@ -24,8 +25,8 @@ const Navbar = () => {
 // 
   // const value = useContext(cartvalue);
   return (
-    <div className='pt-5 flex items-center justify-between relative max-sm:w-full'>
-      <img src={assets.logo} alt="" className='max-sm:w-[150px]'/>
+    <div className='z-[100] pt-5 flex items-center justify-between relative max-sm:w-full'>
+      <img src={assets.logo} alt="" className='max-sm:w-[150px] max-md:hidden'/>
       <ul className='hidden md:flex gap-6 '>
         <NavLink to='/' className='flex flex-col items-center'>
           <p>HOME</p>
@@ -49,24 +50,47 @@ const Navbar = () => {
           x++;
           ((x % 2) !== 0 )? document.querySelector('#serch').classList.remove('hidden'):document.querySelector('#serch').classList.add('hidden')
         }}/></Link>
-        <Link to='/login'> <img src={assets.profile_icon} alt="" className='size-7 cursor-pointer max-md:hidden'/></Link>
+        
+        <Link to='/login'> <img src={assets.profile_icon} alt="" className='size-7 cursor-pointer '/></Link>
+       
         <div>
-          <Link to='/cart'> <img src={assets.cart_icon} alt=""    className='size-7 cursor-pointer max-md:hidden '/></Link>
-          <p className='text-white bg-black w-5 rounded-full text-center absolute bottom-1 right-1 max-md:hidden '>{cartcounter()}</p>
+          <Link to='/cart'> <img src={assets.cart_icon} alt=""    className='size-7 cursor-pointer  '/></Link>
+          <p className='text-white bg-black w-5 rounded-full text-center absolute bottom-1 right-1  max-sm:left-12 max-sm:bottom-[-15px] '>{cartcounter()}</p>
         </div>
-        <img src={assets.menu_icon} className='max-sm:mr-3 size-7 cursor-pointer max-md:block hidden' alt="" onClick={()=>{
+
+        <img src={assets.menu_icon} className='max-sm:mr-3 size-7 cursor-pointer max-md:block hidden max-sm:absolute max-sm:right-0' alt="" onClick={()=>{
           Menucounter++;
           (Menucounter % 2 !== 0)? showmenu():hidemenu()
         }}/>
-        <div id='menu' className='absolute right-0 top-[110px] bg-[#f6f6f6] rounded-2xl hidden md:hidden' onClick={hidemenu}>
-        <Link to='/'><p className='p-3 px-10 hover:bg-black hover:text-white'>Home</p></Link>
-        <Link to='/collections'><p className='p-3 px-10 hover:bg-black hover:text-white'>Collections</p></Link>
-        <Link to='/about'><p className='p-3 px-10 hover:bg-black hover:text-white'>About</p></Link>
-        <Link to='/contact'><p className='p-3 px-10 hover:bg-black hover:text-white'>Contact</p></Link>
-        <Link to='/cart'><p className='p-3 px-10 hover:bg-black hover:text-white'>Cart</p></Link>
+        <div id='menu' className='' onClick={hidemenu}>
+
+          <ul className='h-[100vh] absolute top-0 right-0 w-1/2 bg-white z-[100]'>
+          <IoIosCloseCircle className='mt-3 ml-2 size-6' onClick={()=>{hidemenu()}} />
+          <img src={assets.logo} alt="" className='max-sm:w-[150px] ml-auto mr-auto mt-5 mb-5'/>
+
+
+          <Link to='/'>
+            <li className='p-3 px-10 hover:bg-black hover:text-white'>Home</li>
+            <hr className='w-full'/>
+          </Link>
+          <Link to='/collections'>
+            <li className='p-3 px-10 hover:bg-black hover:text-white'>Collections</li>
+            <hr className='w-full'/>
+          </Link>
+          <Link to='/about'> 
+            <li className='p-3 px-10 hover:bg-black hover:text-white'>About  </li>
+            <hr className='w-full'/>
+            </Link>
+          <Link to='/contact'> 
+          <li className='p-3 px-10 hover:bg-black hover:text-white'>Contact</li>
+          <hr className='w-full'/>
+          </Link>
+         
+           </ul>
         </div>
       </div>
     </div> 
+    // h-[90vh] overflow-hidden flex flex-col absolute top-0 right-0 bg-white
     
 )
 }
