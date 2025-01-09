@@ -24,8 +24,8 @@ const Navbar = () => {
 // 
   // const value = useContext(cartvalue);
   return (
-    <div className='pt-5 flex items-center justify-between relative'>
-      <img src={assets.logo} alt="" />
+    <div className='pt-5 flex items-center justify-between relative max-sm:w-full'>
+      <img src={assets.logo} alt="" className='max-sm:w-[150px]'/>
       <ul className='hidden md:flex gap-6 '>
         <NavLink to='/' className='flex flex-col items-center'>
           <p>HOME</p>
@@ -54,7 +54,7 @@ const Navbar = () => {
           <Link to='/cart'> <img src={assets.cart_icon} alt=""    className='size-7 cursor-pointer max-md:hidden '/></Link>
           <p className='text-white bg-black w-5 rounded-full text-center absolute bottom-1 right-1 max-md:hidden '>{cartcounter()}</p>
         </div>
-        <img src={assets.menu_icon} className='size-7 cursor-pointer max-md:block hidden' alt="" onClick={()=>{
+        <img src={assets.menu_icon} className='max-sm:mr-3 size-7 cursor-pointer max-md:block hidden' alt="" onClick={()=>{
           Menucounter++;
           (Menucounter % 2 !== 0)? showmenu():hidemenu()
         }}/>

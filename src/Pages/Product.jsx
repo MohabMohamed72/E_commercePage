@@ -50,9 +50,9 @@ const Product = () => {
  
 
   return (
-    <div className='mt-12 grid grid-cols-2 max-sm:grid-cols-1 transition-all'>
-      <div className='flex gap-6 h-full'>
-        <div className='flex flex-col gap-3 max-sm:hidden'>
+    <div className='mt-12 w-full grid grid-cols-2 max-sm:grid-cols-1 transition-all max-sm:flex max-sm:flex-col'>
+      <div className='flex gap-6 h-full max-sm:mb-5'>
+        <div className='flex flex-col gap-3 max-sm:hidden flex-wrap'>
         {
           imgs.map((el)=>{
             return(
@@ -62,12 +62,16 @@ const Product = () => {
         }  
         </div>
         <div>
-          {bigimg}
+        <img src={imgs[(imgs.length-1 )]} alt="" className='h-full w-[800px]'/>
+          {/* {bigimg} */}
           {/* <img src={bigimg} alt="" className='h-full w-[800px]' /> */}
         </div>
       </div>
+
+
       <div className='md:ml-10 '>
         <h1 className='font-bold text-[25px] mb-4'>{product.name}</h1>
+
         <div className='flex items-center'>
           <img src={assets.star_icon} className='size-4' alt="" />
           <img src={assets.star_icon} className='size-4' alt="" />
@@ -76,10 +80,11 @@ const Product = () => {
           <img src={assets.star_dull_icon} className='size-4' alt="" />
           <p className='ml-2'>(112)</p>
         </div>
+
         <h1 className='font-bold mt-6 text-[25px]'>${product.price}</h1>
         <p className='text-[20px] text-gray-500 mt-6'>{product.description}</p>
         <p className='text-[20px] font-[500] text-black mt-6'>Select Size</p>
-        <div className='flex gap-3 mt-5'>
+        <div className='flex gap-3 mt-5 flex-wrap'>
           {
             sizes.map((el)=>{
               return(
