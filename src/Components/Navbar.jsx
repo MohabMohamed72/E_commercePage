@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {assets} from '../assets/frontend_assets/assets'
 import {Link , NavLink} from 'react-router-dom'
 import { IoIosCloseCircle } from "react-icons/io";
-
 import { cartvalue } from '../App';
 import { Shopcontext } from '../Context/ShopContext';
 
@@ -12,20 +11,22 @@ export let cartNumber = 0 ;
 let Menucounter = 0;
 
 
-const showmenu = ()=>{
-  document.querySelector('#menu').classList.remove('hidden')
-}
-const hidemenu = ()=>{
-  document.querySelector('#menu').classList.add('hidden')
-}
+// const showmenu = ()=>{
+//   document.querySelector('#menu').classList.remove('hidden')
+// }
+// const hidemenu = ()=>{
+//   document.querySelector('#menu').classList.add('hidden')
+// }
 
 const Navbar = () => {
 
   const {cartcounter} = useContext(Shopcontext)
+
+  const [Visable , setVisable] = useState(false);
 // 
   // const value = useContext(cartvalue);
   return (
-    <div className='z-[100] pt-5 flex items-center justify-between relative max-sm:w-full'>
+    <div className='z-[100] pt-5 flex items-center justify-between relative max-sm:w-full transition-all duration-700'>
       <img src={assets.logo} alt="" className='max-sm:w-[150px] max-md:hidden'/>
       <ul className='hidden md:flex gap-6 '>
         <NavLink to='/' className='flex flex-col items-center'>
@@ -59,32 +60,30 @@ const Navbar = () => {
         </div>
 
         <img src={assets.menu_icon} className='max-sm:mr-3 size-7 cursor-pointer max-md:block hidden max-sm:absolute max-sm:right-0' alt="" onClick={()=>{
-          Menucounter++;
-          (Menucounter % 2 !== 0)? showmenu():hidemenu()
+          setVisable(true)
         }}/>
-        <div id='menu' className='' onClick={hidemenu}>
 
-          <ul className='h-[100vh] absolute top-0 right-0 w-1/2 bg-white z-[100]'>
-          <IoIosCloseCircle className='mt-3 ml-2 size-6' onClick={()=>{hidemenu()}} />
-          <img src={assets.logo} alt="" className='max-sm:w-[150px] ml-auto mr-auto mt-5 mb-5'/>
+        <div id='menu' className={`${Visable? `block`:`hidden`}`} >
 
-
-          <Link to='/'>
-            <li className='p-3 px-10 hover:bg-black hover:text-white'>Home</li>
-            <hr className='w-full'/>
-          </Link>
-          <Link to='/collections'>
-            <li className='p-3 px-10 hover:bg-black hover:text-white'>Collections</li>
-            <hr className='w-full'/>
-          </Link>
-          <Link to='/about'> 
-            <li className='p-3 px-10 hover:bg-black hover:text-white'>About  </li>
+          <ul className='h-[100vh] absolute top-0 right-0 w-1/2 bg-white z-[100] transition-all duration-700' onClick={()=>{setVisable(false)}}>
+            <IoIosCloseCircle className='mt-3 ml-2 size-6 cursor-pointer' onClick={()=>{setVisable(false)}} />
+            <img src={assets.logo} alt="" className='max-sm:w-[150px] ml-auto mr-auto mt-5 mb-5'/>
+            <Link to='/'>
+              <li className='p-3 px-10 hover:bg-black hover:text-white'>Home</li>
+              <hr className='w-full'/>
+            </Link>
+            <Link to='/collections'>
+              <li className='p-3 px-10 hover:bg-black hover:text-white'>Collections</li>
+              <hr className='w-full'/>
+            </Link>
+            <Link to='/about'> 
+              <li className='p-3 px-10 hover:bg-black hover:text-white'>About  </li>
+              <hr className='w-full'/>
+              </Link>
+            <Link to='/contact'> 
+            <li className='p-3 px-10 hover:bg-black hover:text-white'>Contact</li>
             <hr className='w-full'/>
             </Link>
-          <Link to='/contact'> 
-          <li className='p-3 px-10 hover:bg-black hover:text-white'>Contact</li>
-          <hr className='w-full'/>
-          </Link>
          
            </ul>
         </div>

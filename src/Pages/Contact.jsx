@@ -33,7 +33,7 @@ const Contact = () => {
       </div>
 
       <div className='flex mt-12  border-2 border-gray-100 w-fit mr-auto ml-auto '>
-        <input type="email" placeholder='Enter Your Email' className='py-6 2xl:w-[600px] px-3 focus:border-none focus:outline-none'/>
+        <input type="email" placeholder='Enter Your Email' className='max-sm:text-[12px] py-6 2xl:w-[600px] px-3 focus:border-none focus:outline-none'/>
         <button className='text-white bg-black xl:px-12 max-xl:px-3 py-2 font-[500]'>SUBSCRIBE</button>
       </div>
 
